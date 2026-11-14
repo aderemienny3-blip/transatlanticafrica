@@ -1,0 +1,28 @@
+[
+  {
+    "fromCity": "Dakar",
+    "toCity": "Paris",
+    "toCoordinates": [2.3488596, 48.8533249],
+    "label": "PBS performs in Paris",
+    "description": "RFI records the group’s 1993 Paris performance at the Bataclan and later tours in France.",
+    "sources": [
+      { "title": "RFI Musique — Positive Black Soul", "url": "https://www.rfi.fr/fr/musique/20201009-positive-black-soul" },
+      { "title": "OpenStreetMap — Paris", "url": "https://www.openstreetmap.org/node/17807753" }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "fromCity": "Dakar",
+    "toCity": "New York",
+    "toCoordinates": [-74.0060152, 40.7127281],
+    "label": "New York / Paris / Dakar",
+    "description": "RFI documents PBS’s New York recording sessions and the 2003 international release of New York/Paris/Dakar, featuring KRS-One.",
+    "sources": [
+      { "title": "RFI Musique — Positive Black Soul", "url": "https://www.rfi.fr/fr/musique/20201009-positive-black-soul" },
+      { "title": "OpenStreetMap — New York City", "url": "https://www.openstreetmap.org/node/61785451" }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  }
+]

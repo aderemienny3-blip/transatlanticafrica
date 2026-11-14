@@ -3,24 +3,20 @@
     "name": "Positive Black Soul",
     "country": "Senegal",
     "city": "Dakar",
-    "languagesRappedIn": [],
-    "yearsActive": "Formed August 1989; re-formed in 2014",
-    "bio": "Dakar hip-hop group formed by Didier Awadi and Doug E. Tee. The group re-formed and released a new album in 2014.",
+    "sceneCity": "Dakar",
+    "languagesRappedIn": ["Wolof"],
+    "yearsActive": "Formed in 1989; reunited in 2009 and 2014",
+    "bio": "Dakar duo Didier Awadi and Doug E. Tee brought their rival groups together in 1989. RFI documents their international tours, their 2003 New York/Paris/Dakar release with KRS-One, and their 2014 return as a duo.",
     "keyReleases": [
-      { "title": "Boul Fale", "year": 1994 },
+      { "title": "Boul Falé", "year": 1994 },
       { "title": "Run Cool", "year": 2001 },
-      { "title": "25 Years", "year": 2014 }
+      { "title": "New York/Paris/Dakar", "year": 2003 },
+      { "title": "PBS25", "year": 2014 }
     ],
-    "officialLinks": {
-      "spotify": null,
-      "youtube": null,
-      "audiomack": null
-    },
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
     "sources": [
-      {
-        "title": "Frank Bessem’s Musiques d’Afrique — Positive Black Soul",
-        "url": "https://www.musiques-afrique.net/senegal/art-pbs.html"
-      }
+      { "title": "RFI Musique — Positive Black Soul", "url": "https://www.rfi.fr/fr/musique/20201009-positive-black-soul" },
+      { "title": "Frank Bessem’s Musiques d’Afrique — Positive Black Soul", "url": "https://www.musiques-afrique.net/senegal/art-pbs.html" }
     ],
     "status": "verified",
     "lastChecked": "2026-11-14"
@@ -29,21 +25,13 @@
     "name": "Daara J",
     "country": "Senegal",
     "city": "Dakar",
+    "sceneCity": "Dakar",
     "languagesRappedIn": [],
     "yearsActive": null,
     "bio": "A 2010 RFI profile documents the Senegalese group’s development.",
     "keyReleases": [],
-    "officialLinks": {
-      "spotify": null,
-      "youtube": null,
-      "audiomack": null
-    },
-    "sources": [
-      {
-        "title": "RFI Musique — Daara J s’épanouit",
-        "url": "https://musique.rfi.fr/musique/20100527-daara-j-sepanouit.html"
-      }
-    ],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "RFI Musique — Daara J s’épanouit", "url": "https://musique.rfi.fr/musique/20100527-daara-j-sepanouit.html" }],
     "status": "verified",
     "lastChecked": "2026-11-14"
   },
@@ -51,23 +39,13 @@
     "name": "Nix",
     "country": "Senegal",
     "city": null,
+    "sceneCity": "Dakar",
     "languagesRappedIn": [],
     "yearsActive": null,
     "bio": "In an RFI interview, Senegalese rapper Nix discussed his album Excuse My Wolof 2: The Ñuulest.",
-    "keyReleases": [
-      { "title": "Excuse My Wolof 2: The Ñuulest", "year": 2018 }
-    ],
-    "officialLinks": {
-      "spotify": null,
-      "youtube": null,
-      "audiomack": null
-    },
-    "sources": [
-      {
-        "title": "RFI Musique — Nix, Excuse My Wolof 2: The Ñuulest",
-        "url": "https://musique.rfi.fr/rap/20180926-nix-excuse-my-wolof-the-nuulest.html"
-      }
-    ],
+    "keyReleases": [{ "title": "Excuse My Wolof 2: The Ñuulest", "year": 2018 }],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "RFI Musique — Nix, Excuse My Wolof 2: The Ñuulest", "url": "https://musique.rfi.fr/rap/20180926-nix-excuse-my-wolof-the-nuulest.html" }],
     "status": "draft",
     "lastChecked": "2026-11-14"
   },
@@ -75,21 +53,13 @@
     "name": "Xuman",
     "country": "Senegal",
     "city": null,
+    "sceneCity": "Dakar",
     "languagesRappedIn": [],
     "yearsActive": null,
     "bio": "A Leral interview discusses Xuman and the Journal Rappé.",
     "keyReleases": [],
-    "officialLinks": {
-      "spotify": null,
-      "youtube": null,
-      "audiomack": null
-    },
-    "sources": [
-      {
-        "title": "Leral — Entretien avec Xuman autour du Journal rappé",
-        "url": "https://www.leral.net/Entretien-Referendum-attentats-de-Cote-d-Ivoire-politique-nationale-Journal-rappe-avec-Xuman_a167727.html"
-      }
-    ],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "Leral — Entretien avec Xuman autour du Journal rappé", "url": "https://www.leral.net/Entretien-Referendum-attentats-de-Cote-d-Ivoire-politique-nationale-Journal-rappe-avec-Xuman_a167727.html" }],
     "status": "draft",
     "lastChecked": "2026-11-14"
   },
@@ -97,21 +67,141 @@
     "name": "Fou Malade",
     "country": "Senegal",
     "city": null,
+    "sceneCity": "Dakar",
     "languagesRappedIn": [],
     "yearsActive": null,
     "bio": "In a 2013 interview, Fou Malade discussed Bat’Haillons Blin-D, Y’en a marre, and the Guédiawaye Hip Hop center.",
     "keyReleases": [],
-    "officialLinks": {
-      "spotify": null,
-      "youtube": null,
-      "audiomack": null
-    },
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "Leral — Entretien avec Fou Malade", "url": "https://www.leral.net/Entretien-avec-Fou-Malade-L-emprisonnement-de-Karim-Wade-est-une-demande-sociale_a83040.html" }],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Olamide",
+    "country": "Nigeria",
+    "city": "Lagos",
+    "sceneCity": "Lagos",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "The Guardian interviewed Nigerian rapper Olamide about his upbringing in Bariga, Lagos.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" }],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Reggie Rockstone",
+    "country": "Ghana",
+    "city": "Accra",
+    "sceneCity": "Accra",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "BBC coverage credits Reggie Rockstone with helping popularize hiplife after returning to Ghana in 1994.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
     "sources": [
-      {
-        "title": "Leral — Entretien avec Fou Malade",
-        "url": "https://www.leral.net/Entretien-avec-Fou-Malade-L-emprisonnement-de-Karim-Wade-est-une-demande-sociale_a83040.html"
-      }
+      { "title": "BBC News — Hiplife: Ghana's hip-hop generation", "url": "http://news.bbc.co.uk/2/hi/africa/3241007.stm" },
+      { "title": "GhanaWeb — Reggie Rockstone profile", "url": "https://www.ghanaweb.com/person/Reggie-Rockstone-351" }
     ],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Sarkodie",
+    "country": "Ghana",
+    "city": null,
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "BBC World Service featured Ghanaian rapper Sarkodie in an episode of This Is Africa.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "BBC World Service — This Is Africa: Sarkodie", "url": "https://www.bbc.co.uk/programmes/w3ct8td6" }],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Nasty C",
+    "country": "South Africa",
+    "city": "Johannesburg",
+    "sceneCity": "Johannesburg",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "An OkayAfrica interview covers Nasty C’s forthcoming Def Jam debut and his work from Johannesburg during lockdown.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "OkayAfrica — Nasty C on his forthcoming Def Jam debut", "url": "https://www.okayafrica.com/interview-nasty-c-on-his-forthcoming-def-jam-debut-zulu-man-with-some-power/171054" }],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Octopizzo",
+    "country": "Kenya",
+    "city": "Nairobi",
+    "sceneCity": "Nairobi",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "A BBC World Service profile discusses Octopizzo’s background in Kibera.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "BBC World Service — Octopizzo discusses growing up in Kibera", "url": "https://www.bbc.co.uk/programmes/p0217krt" }],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Kalamashaka",
+    "country": "Kenya",
+    "city": "Nairobi",
+    "sceneCity": "Nairobi",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "The BBC’s overview of African hip-hop discusses the group’s place in Kenya’s scene.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "BBC News — African hip-hop: culture and identity", "url": "http://news.bbc.co.uk/2/hi/in_depth/8286310.stm" }],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Falz",
+    "country": "Nigeria",
+    "city": null,
+    "sceneCity": "Lagos",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "Guardian Life published a profile interview with Nigerian rapper Falz.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "Guardian Life — Behind Falz the Bahd Guy", "url": "https://guardian.ng/life/on-the-cover/behind-falz-the-bahd-guy/" }],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "M.anifest",
+    "country": "Ghana",
+    "city": null,
+    "sceneCity": "Accra",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "Time Out Accra published an interview with Ghanaian rapper M.anifest.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "Time Out Accra — Interview: M.anifest", "url": "https://www.timeout.com/accra/music/interview-m-anifest" }],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Kwesta",
+    "country": "South Africa",
+    "city": "Katlehong",
+    "sceneCity": "Johannesburg",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "GQ South Africa interviewed Kwesta about his roots in Katlehong.",
+    "keyReleases": [],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "GQ South Africa — The one Kwesta interview you need to read", "url": "https://gq.co.za/culture/entertainment/2018-07-03-the-one-kwesta-interview-you-need-to-read/" }],
     "status": "draft",
     "lastChecked": "2026-11-14"
   }
