@@ -58,5 +58,25 @@
     "sources": [{ "title": "RFI Musique — Positive Black Soul", "url": "https://www.rfi.fr/fr/musique/20201009-positive-black-soul" }],
     "status": "verified",
     "lastChecked": "2026-11-14"
+  },
+  {
+    "year": 2010,
+    "country": "Nigeria",
+    "city": "Lagos",
+    "title": "Olamide releases Eni Duro",
+    "description": "The Guardian identifies Eni Duro as Olamide’s first hit, recorded mostly in Yoruba, and places it within the rise of indigenous-language rap from mainland Lagos.",
+    "sources": [{ "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" }],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "year": 2020,
+    "country": "South Africa",
+    "city": "Johannesburg",
+    "title": "Nasty C records Lost Files in Johannesburg",
+    "description": "OkayAfrica reports that Nasty C recorded the Lost Files EP from his Johannesburg home during the COVID-19 lockdown.",
+    "sources": [{ "title": "OkayAfrica — Nasty C on his forthcoming Def Jam debut", "url": "https://www.okayafrica.com/interview-nasty-c-on-his-forthcoming-def-jam-debut-zulu-man-with-some-power/171054" }],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
   }
 ]
