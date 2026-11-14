@@ -1,0 +1,118 @@
+[
+  {
+    "name": "Positive Black Soul",
+    "country": "Senegal",
+    "city": "Dakar",
+    "languagesRappedIn": [],
+    "yearsActive": "Formed August 1989; re-formed in 2014",
+    "bio": "Dakar hip-hop group formed by Didier Awadi and Doug E. Tee. The group re-formed and released a new album in 2014.",
+    "keyReleases": [
+      { "title": "Boul Fale", "year": 1994 },
+      { "title": "Run Cool", "year": 2001 },
+      { "title": "25 Years", "year": 2014 }
+    ],
+    "officialLinks": {
+      "spotify": null,
+      "youtube": null,
+      "audiomack": null
+    },
+    "sources": [
+      {
+        "title": "Frank Bessem’s Musiques d’Afrique — Positive Black Soul",
+        "url": "https://www.musiques-afrique.net/senegal/art-pbs.html"
+      }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Daara J",
+    "country": "Senegal",
+    "city": "Dakar",
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "A 2010 RFI profile documents the Senegalese group’s development.",
+    "keyReleases": [],
+    "officialLinks": {
+      "spotify": null,
+      "youtube": null,
+      "audiomack": null
+    },
+    "sources": [
+      {
+        "title": "RFI Musique — Daara J s’épanouit",
+        "url": "https://musique.rfi.fr/musique/20100527-daara-j-sepanouit.html"
+      }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Nix",
+    "country": "Senegal",
+    "city": null,
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "In an RFI interview, Senegalese rapper Nix discussed his album Excuse My Wolof 2: The Ñuulest.",
+    "keyReleases": [
+      { "title": "Excuse My Wolof 2: The Ñuulest", "year": 2018 }
+    ],
+    "officialLinks": {
+      "spotify": null,
+      "youtube": null,
+      "audiomack": null
+    },
+    "sources": [
+      {
+        "title": "RFI Musique — Nix, Excuse My Wolof 2: The Ñuulest",
+        "url": "https://musique.rfi.fr/rap/20180926-nix-excuse-my-wolof-the-nuulest.html"
+      }
+    ],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Xuman",
+    "country": "Senegal",
+    "city": null,
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "A Leral interview discusses Xuman and the Journal Rappé.",
+    "keyReleases": [],
+    "officialLinks": {
+      "spotify": null,
+      "youtube": null,
+      "audiomack": null
+    },
+    "sources": [
+      {
+        "title": "Leral — Entretien avec Xuman autour du Journal rappé",
+        "url": "https://www.leral.net/Entretien-Referendum-attentats-de-Cote-d-Ivoire-politique-nationale-Journal-rappe-avec-Xuman_a167727.html"
+      }
+    ],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  },
+  {
+    "name": "Fou Malade",
+    "country": "Senegal",
+    "city": null,
+    "languagesRappedIn": [],
+    "yearsActive": null,
+    "bio": "In a 2013 interview, Fou Malade discussed Bat’Haillons Blin-D, Y’en a marre, and the Guédiawaye Hip Hop center.",
+    "keyReleases": [],
+    "officialLinks": {
+      "spotify": null,
+      "youtube": null,
+      "audiomack": null
+    },
+    "sources": [
+      {
+        "title": "Leral — Entretien avec Fou Malade",
+        "url": "https://www.leral.net/Entretien-avec-Fou-Malade-L-emprisonnement-de-Karim-Wade-est-une-demande-sociale_a83040.html"
+      }
+    ],
+    "status": "draft",
+    "lastChecked": "2026-11-14"
+  }
+]
