@@ -122,18 +122,7 @@ function MapCanvas({
 
     const map = new MapLibreMap({
       container: host,
-      style: {
-        version: 8,
-        sources: {
-          carto: {
-            type: "raster",
-            tiles: ["https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"],
-            tileSize: 256,
-            attribution: "© OpenStreetMap contributors © CARTO",
-          },
-        },
-        layers: [{ id: "carto-dark-basemap", type: "raster", source: "carto" }],
-      },
+      style: "https://tiles.openfreemap.org/styles/dark",
       center: [15, -3],
       zoom: 2.2,
       minZoom: 1.7,
