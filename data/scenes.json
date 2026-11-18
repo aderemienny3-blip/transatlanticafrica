@@ -5,12 +5,12 @@
     "coordinates": [-17.447938, 14.693425],
     "definingEra": "Dakar rap’s documented early period: 1985–1993",
     "localSubgenres": ["Rap Galsen"],
-    "keyVenuesOrEvents": ["Dakar 92 compilation (1992)", "Dakar music festival (1993)"],
+    "keyVenuesOrEvents": ["Dakar 92 compilation (1992)"],
     "sources": [
       { "title": "RFI Musique — Positive Black Soul", "url": "https://www.rfi.fr/fr/musique/20201009-positive-black-soul" },
       { "title": "OpenStreetMap — Dakar", "url": "https://www.openstreetmap.org/node/27565045" }
     ],
-    "status": "verified",
+    "status": "documented",
     "lastChecked": "2026-11-14"
   },
   {
@@ -24,7 +24,7 @@
       { "title": "BBC News — Hiplife: Ghana's hip-hop generation", "url": "http://news.bbc.co.uk/2/hi/africa/3241007.stm" },
       { "title": "OpenStreetMap — Accra", "url": "https://www.openstreetmap.org/node/27565080" }
     ],
-    "status": "verified",
+    "status": "documented",
     "lastChecked": "2026-11-14"
   },
   {
@@ -38,8 +38,8 @@
       { "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" },
       { "title": "OpenStreetMap — Lagos", "url": "https://www.openstreetmap.org/node/27565124" }
     ],
-    "status": "verified",
-    "lastChecked": "2026-11-14"
+    "status": "documented",
+    "lastChecked": "2026-11-18"
   },
   {
     "country": "South Africa",
@@ -52,7 +52,7 @@
       { "title": "OkayAfrica — Nasty C on his forthcoming Def Jam debut", "url": "https://www.okayafrica.com/interview-nasty-c-on-his-forthcoming-def-jam-debut-zulu-man-with-some-power/171054" },
       { "title": "OpenStreetMap — Johannesburg", "url": "https://www.openstreetmap.org/node/261833893" }
     ],
-    "status": "verified",
+    "status": "documented",
     "lastChecked": "2026-11-14"
   },
   {
@@ -66,7 +66,7 @@
       { "title": "BBC World Service — Octopizzo discusses growing up in Kibera", "url": "https://www.bbc.co.uk/programmes/p0217krt" },
       { "title": "OpenStreetMap — Nairobi", "url": "https://www.openstreetmap.org/node/27565105" }
     ],
-    "status": "verified",
+    "status": "documented",
     "lastChecked": "2026-11-14"
   },
   {

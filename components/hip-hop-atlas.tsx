@@ -8,9 +8,12 @@ import sceneRecords from "@/data/scenes.json"
 import artistRecords from "@/data/artists.json"
 import timelineRecords from "@/data/timeline.json"
 import diasporaRecords from "@/data/diaspora.json"
+import { SiteFooter } from "@/components/site-footer"
+import { SubstackSubscribe } from "@/components/substack-subscribe"
 
 type Language = "All" | "Francophone" | "Anglophone" | "Lusophone"
 type Status = "verified" | "draft"
+type SceneStatus = Status | "documented"
 type Source = { title: string; url: string }
 type Scene = {
   country: string
@@ -20,7 +23,7 @@ type Scene = {
   localSubgenres: string[]
   keyVenuesOrEvents: string[]
   sources: Source[]
-  status: Status
+  status: SceneStatus
   lastChecked: string
 }
 type Artist = {
@@ -84,11 +87,24 @@ const accentByLanguage: Record<Language, string> = {
   Lusophone: "#b39aff",
 }
 const languageFilters: Language[] = ["All", "Francophone", "Anglophone", "Lusophone"]
+const regionByCountry: Record<string, string> = {
+  Senegal: "West Africa",
+  Ghana: "West Africa",
+  Nigeria: "West Africa",
+  "Côte d’Ivoire": "West Africa",
+  "DR Congo": "Central Africa",
+  Kenya: "East Africa",
+  Tanzania: "East Africa",
+  "South Africa": "Southern Africa",
+  Mozambique: "Southern Africa",
+  Angola: "Southern Africa",
+}
 const formatCount = (value: number) => String(value).padStart(2, "0")
+const isVerifiedArtist = (artist: Artist) => artist.status === "verified" && artist.sources.length >= 2 && artist.languagesRappedIn.some((language) => language.trim().length > 0)
 
-function StatusBadge({ status }: { status: Status }) {
-  if (status !== "draft") return null
-  return <span className="verification-badge">Needs verification</span>
+function StatusBadge({ status, verifiedAllowed = true }: { status: Status; verifiedAllowed?: boolean }) {
+  const verified = status === "verified" && verifiedAllowed
+  return <span className={`verification-badge${verified ? " is-verified" : ""}`}>{verified ? "Verified" : "Needs verification"}</span>
 }
 
 function MapCanvas({
@@ -113,6 +129,7 @@ function MapCanvas({
   const hostRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
   const markersRef = useRef<Marker[]>([])
+  const [mapFailed, setMapFailed] = useState(false)
   const onSelectRef = useRef(onSelect)
   onSelectRef.current = onSelect
 
@@ -124,7 +141,7 @@ function MapCanvas({
       container: host,
       style: "https://tiles.openfreemap.org/styles/dark",
       center: [15, -3],
-      zoom: 2.2,
+      zoom: 2.7,
       minZoom: 1.7,
       maxZoom: 8,
       attributionControl: false,
@@ -133,11 +150,23 @@ function MapCanvas({
     map.addControl(new AttributionControl({ compact: true }), "bottom-right")
     mapRef.current = map
 
+    const fallbackTimeout = window.setTimeout(() => setMapFailed(true), 12000)
+    const handleMapError = (event: { error: { message?: string } }) => {
+      const message = (event.error.message ?? "").toLowerCase()
+      if (!map.isStyleLoaded() || /failed to fetch|networkerror|http\s+[45]\d\d/.test(message)) setMapFailed(true)
+    }
+    map.on("error", handleMapError)
     const resizeObserver = new ResizeObserver(() => map.resize())
     resizeObserver.observe(host)
-    map.once("load", () => map.resize())
+    map.once("load", () => {
+      window.clearTimeout(fallbackTimeout)
+      setMapFailed(false)
+      map.resize()
+    })
 
     return () => {
+      window.clearTimeout(fallbackTimeout)
+      map.off("error", handleMapError)
       resizeObserver.disconnect()
       markersRef.current.forEach((marker) => marker.remove())
       map.remove()
@@ -153,9 +182,10 @@ function MapCanvas({
       if (!scene.coordinates) return []
       const button = document.createElement("button")
       const isSelected = scene.city === selected.city
+      const isDocumented = scene.status === "documented"
       button.type = "button"
-      button.className = `city-marker${isSelected ? " city-marker-active" : ""}${scene.status === "draft" ? " city-marker-draft" : ""}`
-      button.setAttribute("aria-label", `${scene.city}, ${scene.country}${scene.status === "draft" ? ", coming soon" : ""}`)
+      button.className = `city-marker${isSelected ? " city-marker-active" : ""}${isDocumented ? "" : " city-marker-draft"}`
+      button.setAttribute("aria-label", `${scene.city}, ${scene.country}${isDocumented ? "" : ", coming soon"}`)
       button.style.setProperty("--marker-color", accent)
       const dot = document.createElement("span")
       dot.className = "marker-dot"
@@ -164,7 +194,7 @@ function MapCanvas({
       label.textContent = scene.city
       const status = document.createElement("span")
       status.className = "marker-coming-soon"
-      status.textContent = scene.status === "draft" ? "Coming soon" : ""
+      status.textContent = isDocumented ? "" : "Coming soon"
       button.append(dot, label, status)
       button.addEventListener("click", () => onSelectRef.current(scene))
       return [new Marker({ element: button, anchor: "center" }).setLngLat(scene.coordinates).addTo(map)]
@@ -235,8 +265,9 @@ function MapCanvas({
       <button aria-label="Zoom in" onClick={() => setZoom(Math.min(zoom + 0.5, 7))}><Plus size={15} /></button>
       <button aria-label="Zoom out" onClick={() => setZoom(Math.max(zoom - 0.5, 1.7))}><Minus size={15} /></button>
       <span />
-      <button aria-label="Reset map view" onClick={() => { setZoom(2.2); mapRef.current?.easeTo({ center: [15, -3], duration: 450 }) }}><Layers3 size={15} /></button>
+      <button aria-label="Reset map view" onClick={() => { setZoom(2.7); mapRef.current?.easeTo({ center: [15, -3], duration: 450 }) }}><Layers3 size={15} /></button>
     </div>
+    {mapFailed && <div className="map-fallback" role="status" aria-live="polite"><strong>MAP TEMPORARILY UNAVAILABLE</strong><p>Map tiles could not be fetched. Search and source-checked city records are still available.</p></div>}
   </div>
 }
 
@@ -249,6 +280,13 @@ function SourceList({ sources }: { sources: Source[] }) {
   </div>
 }
 
+function TimelineEvidence({ entry }: { entry: TimelineEntry }) {
+  return <div className="timeline-evidence">
+    <StatusBadge status={entry.status} />
+    {entry.sources.length ? <div className="timeline-source-links">{entry.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title}<ArrowUpRight size={10} /></a>)}</div> : <span className="timeline-source-pending">Source pending</span>}
+  </div>
+}
+
 function ScenePanel({ scene, accent, language, routes }: { scene: Scene; accent: string; language: "en" | "fr"; routes: DiasporaRoute[] }) {
   const relatedArtists = artists.filter((artist) => artist.country === scene.country && (artist.sceneCity === scene.city || artist.city === scene.city))
   const sceneTimeline = timeline.filter((entry) => entry.country === scene.country && entry.city === scene.city)
@@ -258,21 +296,26 @@ function ScenePanel({ scene, accent, language, routes }: { scene: Scene; accent:
     ...routes.flatMap((route) => route.sources),
   ]
   const french = language === "fr"
-  const isBeingResearched = scene.status === "draft"
+  if (scene.status !== "documented") {
+    const region = regionByCountry[scene.country] ?? "Region not documented"
+    const languageGroup = languageByCountry[scene.country] ?? "Not documented"
+    return <aside className="story-panel" aria-label={`${scene.country} hip-hop story`}>
+      <div className="panel-topline"><span><MapPin size={12} /> {language === "fr" ? "SCÈNE SÉLECTIONNÉE" : "SELECTED SCENE"}</span></div>
+      <div className="country-title"><div><p className="eyebrow">{scene.country}</p><h2>{scene.city}</h2></div><span className="country-orb" style={{ "--accent": accent } as React.CSSProperties}>{scene.country.slice(0, 2).toUpperCase()}</span></div>
+      <div className="coming-soon-state"><strong>COMING SOON</strong><p>{region}</p><p>Language group: {languageGroup}</p><p>Not yet documented.</p></div>
+    </aside>
+  }
 
   return <aside className="story-panel" aria-label={`${scene.country} hip-hop story`}>
     <div className="panel-topline">
       <span><MapPin size={12} /> {french ? "SCÈNE SÉLECTIONNÉE" : "SELECTED SCENE"}</span>
-      <StatusBadge status={scene.status} />
     </div>
     <div className="country-title">
       <div><p className="eyebrow">{scene.country}</p><h2>{scene.city}</h2></div>
       <span className="country-orb" style={{ "--accent": accent } as React.CSSProperties}>{scene.country.slice(0, 2).toUpperCase()}</span>
     </div>
 
-    {isBeingResearched ? <div className="research-state"><span className="research-state-dot" />
-      <div><strong>{french ? "SCÈNE EN COURS DE RECHERCHE" : "SCENE BEING RESEARCHED"}</strong><p>We’re gathering verifiable sources for this city. Check back as the record grows.</p></div>
-    </div> : <p className="story-copy">{scene.localSubgenres.length ? `Documented local sound: ${scene.localSubgenres.join(", ")}.` : "Source-checked scene information is being gathered."}</p>}
+    <p className="story-copy">{scene.localSubgenres.length ? `Documented local sound: ${scene.localSubgenres.join(", ")}.` : "Source-checked scene information is being gathered."}</p>
 
     {scene.localSubgenres.length > 0 && <div className="panel-tags">{scene.localSubgenres.map((genre) => <span key={genre}>{genre}</span>)}</div>}
     {scene.definingEra && <div className="scene-detail-row"><span className="meta-label">DEFINING ERA</span><strong>{scene.definingEra}</strong></div>}
@@ -282,7 +325,7 @@ function ScenePanel({ scene, accent, language, routes }: { scene: Scene; accent:
       <div className="panel-rule" />
       <div className="panel-section-head"><h3>{french ? "ARTISTES DOCUMENTÉS" : "DOCUMENTED ARTISTS"}</h3><span>{formatCount(relatedArtists.length)}</span></div>
       <div className="artist-list">{relatedArtists.map((artist) => <article className="artist-record" key={artist.name}>
-        <div className="artist-record-heading"><span className="artist-disc"><Disc3 size={16} /></span><div className="artist-name">{artist.name}<small>{artist.city ?? artist.country}{artist.languagesRappedIn.length ? ` · ${artist.languagesRappedIn.join(", ")}` : ""}</small></div><StatusBadge status={artist.status} /></div>
+        <div className="artist-record-heading"><span className="artist-disc"><Disc3 size={16} /></span><div className="artist-name">{artist.name}<small>{artist.city ?? artist.country}{artist.languagesRappedIn.length ? ` · ${artist.languagesRappedIn.join(", ")}` : ""}</small></div><StatusBadge status={artist.status} verifiedAllowed={isVerifiedArtist(artist)} /></div>
         <p>{artist.bio}</p>
         {artist.keyReleases.length > 0 && <div className="release-list"><span className="meta-label">KEY RELEASES</span>{artist.keyReleases.map((release) => <span key={`${release.title}-${release.year}`}>{release.title}{release.year ? ` · ${release.year}` : ""}</span>)}</div>}
         <small className="last-checked">Checked {artist.lastChecked}</small>
@@ -290,7 +333,7 @@ function ScenePanel({ scene, accent, language, routes }: { scene: Scene; accent:
       </article>)}</div>
     </>}
 
-    {sceneTimeline.length > 0 && <div className="scene-timeline-list">{sceneTimeline.map((entry) => <div className="scene-timeline-entry" key={`${entry.year}-${entry.title}`}><span>{entry.year}</span><div><strong>{entry.title}</strong><p>{entry.description}</p></div></div>)}</div>}
+    {sceneTimeline.length > 0 && <div className="scene-timeline-list">{sceneTimeline.map((entry) => <div className="scene-timeline-entry" key={`${entry.year}-${entry.title}`}><span>{entry.year}</span><div><strong>{entry.title}</strong><p>{entry.description}</p><TimelineEvidence entry={entry} /></div></div>)}</div>}
     {routes.length > 0 && <div className="diaspora-panel"><span className="meta-label">DOCUMENTED ATLANTIC CONNECTIONS</span>{routes.map((route) => <article key={route.toCity}><strong>{route.toCity}</strong><p>{route.description}</p><StatusBadge status={route.status} /></article>)}</div>}
 
     <SourceList sources={sceneSources} />
@@ -301,13 +344,15 @@ function ScenePanel({ scene, accent, language, routes }: { scene: Scene; accent:
 export function HipHopAtlas() {
   const [language, setLanguage] = useState<Language>("All")
   const [selected, setSelected] = useState(scenes.find((scene) => scene.city === "Dakar") ?? scenes[0])
-  const [zoom, setZoom] = useState(2.2)
+  const [zoom, setZoom] = useState(2.7)
   const [interfaceLanguage, setInterfaceLanguage] = useState<"en" | "fr">("en")
   const [search, setSearch] = useState("")
   const [mapLayer, setMapLayer] = useState<MapLayer>("scenes")
   const accent = accentByLanguage[language]
   const french = interfaceLanguage === "fr"
-  const verifiedArtistCount = artists.filter((artist) => artist.status === "verified").length
+  const documentedCityCount = scenes.filter((scene) => scene.status === "documented").length
+  const verifiedArtistCount = artists.filter(isVerifiedArtist).length
+  const sourceCitationCount = [...scenes, ...artists, ...timeline, ...diasporaRoutes].reduce((total, record) => total + record.sources.length, 0)
   const visibleScenes = useMemo(() => scenes.filter((scene) => {
     const languageMatches = language === "All" || languageByCountry[scene.country] === language
     const searchMatches = `${scene.city} ${scene.country}`.toLowerCase().includes(search.toLowerCase())
@@ -334,11 +379,11 @@ export function HipHopAtlas() {
 
   return <main className="atlas-shell" style={{ "--accent": accent } as React.CSSProperties}>
     <header className="topbar"><a className="brand" href="#top" aria-label="Transatlantic Africa home"><span className="brand-mark"><AudioLines size={18} /></span><span>TRANSATLANTIC<br className="brand-break" /><span className="brand-soft"> AFRICA</span></span><span className="brand-period">.</span></a>
-      <nav className="main-nav" aria-label="Main navigation"><a className="nav-active" href="#atlas">{french ? "L’ATLAS" : "THE ATLAS"}</a><a href="#artists">{french ? "ARTISTES" : "ARTISTS"}</a><a href="#sounds">{french ? "LES SONS" : "SOUNDS"}</a><a href="/about-method">{french ? "MÉTHODE" : "ABOUT & METHOD"}</a></nav>
+      <nav className="main-nav" aria-label="Main navigation"><a className="nav-active" href="#atlas">{french ? "L’ATLAS" : "THE ATLAS"}</a><a href="#artists">{french ? "ARTISTES" : "ARTISTS"}</a><a href="#sounds">{french ? "LES SONS" : "SOUNDS"}</a><a href="/journal">JOURNAL</a><a href="/about-method">{french ? "MÉTHODE" : "ABOUT & METHOD"}</a></nav>
       <div className="top-actions"><button className="language-switch" onClick={() => setInterfaceLanguage(french ? "en" : "fr")} aria-label="Switch interface language"><Globe2 size={14} /> {french ? "FR" : "EN"}<ChevronDown size={12} /></button><button className="submit-button">{french ? "PROPOSER UN ARTISTE" : "SUBMIT AN ARTIST"}<ArrowUpRight size={13} /></button></div>
     </header>
     <section className="intro-row" id="top"><div className="intro-copy"><div className="kicker"><span className="live-dot" /> {french ? "UN ATLAS VIVANT DES CULTURES HIP-HOP" : "A LIVING ATLAS OF HIP-HOP CULTURE"}</div><h1>{french ? <>Le hip-hop<br /><em>sans frontières.</em></> : <>Across the ocean,<br /><em>back to the source.</em></>}</h1><p>{french ? "Du Bronx à Dakar, des rythmes et des idées traversent l’Atlantique dans les deux sens." : "From the Bronx to Dakar and back, hip-hop carries rhythms, stories, and influence in both directions."}</p>
-      <div className="intro-foot"><span><span className="tiny-bars">▂ ▄ ▆</span> {formatCount(scenes.length)} CITY RECORDS</span><span className="foot-divider" /><span>{formatCount(verifiedArtistCount)} VERIFIED ARTISTS</span></div></div>
+      <div className="intro-foot"><span className="intro-stat"><strong>{formatCount(documentedCityCount)}</strong><small>CITIES DOCUMENTED</small></span><span className="foot-divider" /><span className="intro-stat"><strong>{formatCount(verifiedArtistCount)}</strong><small>VERIFIED ARTISTS</small></span><span className="foot-divider" /><span className="intro-stat"><strong>{formatCount(sourceCitationCount)}</strong><small>SOURCES CITED</small></span></div></div>
       <div className="intro-side"><div className="chapter-label">01 <span>—</span> A TWO-WAY EXCHANGE</div><p>Different origins.<br />One shared frequency.</p><span className="side-coordinate">AFRICA ↔ ATLANTIC</span><ArrowDownRight className="side-arrow" size={18} /></div>
     </section>
     <section className="atlas-section" id="atlas" aria-label="Interactive hip-hop atlas"><div className="atlas-toolbar"><div className="view-title"><span className="section-number">01</span><h2>{french ? "EXPLORER L’ATLAS" : "EXPLORE THE ATLAS"}</h2><span className="live-label"><span /> SOURCE-LED MAP</span></div><div className="map-tools"><label className="search-field"><Search size={14} /><input aria-label="Search city or country" placeholder="Find a city or country" value={search} onChange={(event) => setSearch(event.target.value)} /></label><span className="map-tools-divider" /><button className="map-tool-button"><SlidersHorizontal size={14} /> <span>{french ? "FILTRES" : "FILTERS"}</span></button></div></div>
@@ -346,10 +391,19 @@ export function HipHopAtlas() {
         <div className="map-layer-tabs" role="group" aria-label="Map layer"><button className={mapLayer === "scenes" ? "layer-active" : ""} onClick={() => setMapLayer("scenes")} aria-pressed={mapLayer === "scenes"}>AFRICAN SCENES</button><button className={mapLayer === "diaspora" ? "layer-active" : ""} onClick={() => setMapLayer("diaspora")} aria-pressed={mapLayer === "diaspora"}>DIASPORA LINKS <span>{diasporaRoutes.length}</span></button></div>
         <div className="map-frame"><MapCanvas visibleScenes={visibleScenes} selected={selected} onSelect={handleSelect} accent={accent} zoom={zoom} setZoom={setZoom} layer={mapLayer} routes={activeRoutes} /><div className="map-top-label"><span className="map-live"><i /> INTERACTIVE ATLAS</span><span>ATLANTIC&nbsp; / &nbsp;WEST&nbsp; / &nbsp;EAST&nbsp; / &nbsp;SOUTHERN AFRICA</span></div><div className="map-legend"><span><i style={{ background: accent }} /> {language === "All" ? "AFRICAN HIP-HOP" : `${language.toUpperCase()} SCENES`}</span><span className="legend-divider" />{visibleScenes.length} LOCATIONS</div><button className="map-compass" aria-label="Compass"><span>N</span><Compass size={17} /></button>{mapLayer === "diaspora" && activeRoutes.length === 0 && <div className="diaspora-empty">No sourced connections for this scene yet.</div>}</div>
         {visibleScenes.length === 0 && <p className="no-results">No sourced city records match that search.</p>}
-        {timeline.length > 0 ? <div className="timeline"><div className="timeline-title"><span className="timeline-icon"><Radio size={15} /></span><div><strong>{french ? "REPÈRES DOCUMENTÉS" : "DOCUMENTED MOMENTS"}</strong><small>{french ? "Événements datés et sourcés" : "Dated moments with sources"}</small></div></div><div className="timeline-event-list">{timeline.map((entry) => <button className="timeline-event" key={`${entry.year}-${entry.title}`} onClick={() => selectTimelineEntry(entry)}><span>{entry.year}</span><strong>{entry.title}</strong><ArrowUpRight size={13} /></button>)}</div></div> : <div className="timeline timeline-empty"><Radio size={15} /><span>No verified timeline entries yet. The scrubber will appear when sourced dates are added.</span></div>}
+        {timeline.length > 0 ? <div className="timeline"><div className="timeline-title"><span className="timeline-icon"><Radio size={15} /></span><div><strong>{french ? "REPÈRES DOCUMENTÉS" : "DOCUMENTED MOMENTS"}</strong><small>{french ? "Événements datés et sourcés" : "Dated moments with sources"}</small></div></div><div className="timeline-event-list">{timeline.map((entry) => <div className="timeline-entry" key={`${entry.year}-${entry.title}`}><button className="timeline-event" onClick={() => selectTimelineEntry(entry)}><span>{entry.year}</span><strong>{entry.title}</strong><ArrowUpRight size={13} /></button><TimelineEvidence entry={entry} /></div>)}</div></div> : <div className="timeline timeline-empty"><Radio size={15} /><span>No verified timeline entries yet. The scrubber will appear when sourced dates are added.</span></div>}
       </div><ScenePanel scene={selected} accent={accent} language={interfaceLanguage} routes={activeRoutes} /></div>
       <div className="bottom-note"><span><Volume2 size={13} /> {french ? "DES HISTOIRES, DES SOURCES, UN ATLANTIQUE" : "STORIES, SOURCES, AND A SHARED ATLANTIC"}</span><a href="/about-method">{french ? "VOIR LA MÉTHODE" : "HOW WE RESEARCH"} <ArrowUpRight size={12} /></a></div>
     </section>
-    <footer className="page-footer" id="about"><span>TRANSATLANTIC AFRICA © 2026</span><span>A SOURCE-LED FIELD GUIDE TO HIP-HOP</span><span>AFRICA ↔ ATLANTIC</span></footer>
+    <section className="newsletter-section" id="newsletter" aria-labelledby="newsletter-title">
+      <div className="newsletter-copy">
+        <p className="kicker"><span className="live-dot" /> FROM THE JOURNAL</p>
+        <h2 id="newsletter-title">Follow the <em>frequency.</em></h2>
+        <p>Get new writing from Transatlantic West Africa in your inbox, delivered by Substack.</p>
+        <a href="/journal" className="newsletter-journal-link">Read the journal <ArrowUpRight size={13} /></a>
+      </div>
+      <SubstackSubscribe title="Subscribe to Transatlantic West Africa on Substack" className="substack-embed-newsletter" />
+    </section>
+    <SiteFooter />
   </main>
 }

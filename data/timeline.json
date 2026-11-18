@@ -13,8 +13,8 @@
     "year": 1992,
     "country": "Senegal",
     "city": "Dakar",
-    "title": "MC Solaar invites Positive Black Soul onstage",
-    "description": "RFI reports that PBS opened MC Solaar’s first Dakar performance in October 1992.",
+    "title": "Positive Black Soul opens MC Solaar’s first Dakar show",
+    "description": "Positive Black Soul opened MC Solaar’s first Dakar show in October 1992.",
     "sources": [{ "title": "RFI Musique — Positive Black Soul", "url": "https://www.rfi.fr/fr/musique/20201009-positive-black-soul" }],
     "status": "verified",
     "lastChecked": "2026-11-14"
@@ -45,8 +45,8 @@
     "city": "Accra",
     "title": "Reggie Rockstone returns to Ghana",
     "description": "BBC coverage describes Rockstone’s return in 1994 and his role in popularizing hiplife.",
-    "sources": [{ "title": "BBC News — Hiplife: Ghana's hip-hop generation", "url": "http://news.bbc.co.uk/2/hi/africa/3241007.stm" }],
-    "status": "verified",
+    "sources": [],
+    "status": "draft",
     "lastChecked": "2026-11-14"
   },
   {
@@ -65,8 +65,8 @@
     "city": "Lagos",
     "title": "Olamide releases Eni Duro",
     "description": "The Guardian identifies Eni Duro as Olamide’s first hit, recorded mostly in Yoruba, and places it within the rise of indigenous-language rap from mainland Lagos.",
-    "sources": [{ "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" }],
-    "status": "verified",
+    "sources": [],
+    "status": "draft",
     "lastChecked": "2026-11-14"
   },
   {
@@ -75,8 +75,8 @@
     "city": "Johannesburg",
     "title": "Nasty C records Lost Files in Johannesburg",
     "description": "OkayAfrica reports that Nasty C recorded the Lost Files EP from his Johannesburg home during the COVID-19 lockdown.",
-    "sources": [{ "title": "OkayAfrica — Nasty C on his forthcoming Def Jam debut", "url": "https://www.okayafrica.com/interview-nasty-c-on-his-forthcoming-def-jam-debut-zulu-man-with-some-power/171054" }],
-    "status": "verified",
+    "sources": [],
+    "status": "draft",
     "lastChecked": "2026-11-14"
   }
 ]

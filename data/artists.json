@@ -32,7 +32,7 @@
     "keyReleases": [],
     "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
     "sources": [{ "title": "RFI Musique — Daara J s’épanouit", "url": "https://musique.rfi.fr/musique/20100527-daara-j-sepanouit.html" }],
-    "status": "verified",
+    "status": "draft",
     "lastChecked": "2026-11-14"
   },
   {
@@ -82,14 +82,17 @@
     "country": "Nigeria",
     "city": "Lagos",
     "sceneCity": "Lagos",
-    "languagesRappedIn": [],
+    "languagesRappedIn": ["Yoruba", "English"],
     "yearsActive": null,
-    "bio": "The Guardian interviewed Nigerian rapper Olamide about his upbringing in Bariga, Lagos.",
-    "keyReleases": [],
+    "bio": "Raised in Bariga, Olamide’s 2010 breakout “Eni Duro” helped bring Yoruba-led rap from mainland Lagos into wider Nigerian pop conversations.",
+    "keyReleases": [{ "title": "Eni Duro", "year": 2010 }],
     "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
-    "sources": [{ "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" }],
+    "sources": [
+      { "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" },
+      { "title": "Wikipedia — Olamide", "url": "https://en.wikipedia.org/wiki/Olamide" }
+    ],
     "status": "verified",
-    "lastChecked": "2026-11-14"
+    "lastChecked": "2026-11-18"
   },
   {
     "name": "Reggie Rockstone",
@@ -166,16 +169,19 @@
   {
     "name": "Falz",
     "country": "Nigeria",
-    "city": null,
+    "city": "Lagos",
     "sceneCity": "Lagos",
-    "languagesRappedIn": [],
+    "languagesRappedIn": ["English"],
     "yearsActive": null,
-    "bio": "Guardian Life published a profile interview with Nigerian rapper Falz.",
+    "bio": "Born in Lagos, Falz pairs rap with comic performance and broken-English delivery; his work also spans acting.",
     "keyReleases": [],
     "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
-    "sources": [{ "title": "Guardian Life — Behind Falz the Bahd Guy", "url": "https://guardian.ng/life/on-the-cover/behind-falz-the-bahd-guy/" }],
-    "status": "draft",
-    "lastChecked": "2026-11-14"
+    "sources": [
+      { "title": "Guardian Life — Behind Falz the Bahd Guy", "url": "https://guardian.ng/life/on-the-cover/behind-falz-the-bahd-guy/" },
+      { "title": "Wikipedia — Falz", "url": "https://en.wikipedia.org/wiki/Falz" }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-18"
   },
   {
     "name": "M.anifest",

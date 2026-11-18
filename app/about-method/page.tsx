@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowLeft, ArrowUpRight, AudioLines } from "lucide-react"
+import { SiteFooter } from "@/components/site-footer"
 
 export const metadata = {
   title: "About & Method | Transatlantic Africa",
@@ -20,7 +21,7 @@ const standards = [
   {
     number: "03",
     title: "Independent confirmation",
-    detail: "Artist records need at least one non-streaming source, such as an interview, editorial profile, news report, or label biography. Music links are added only when an official account can be identified.",
+    detail: "An artist is marked verified only when at least two independent sources support the record and a documented language field is present. Streaming links never count as the only evidence.",
   },
 ]
 
@@ -40,6 +41,6 @@ export default function AboutMethodPage() {
       <div className="method-standards">{standards.map((item) => <article className="method-standard" key={item.number}><span>{item.number}</span><div><h3>{item.title}</h3><p>{item.detail}</p></div></article>)}</div>
     </section>
     <section className="method-corrections" id="corrections"><span className="section-number">02</span><div><p className="eyebrow">CORRECTIONS & CONTRIBUTIONS</p><h2>Bring a source with you.</h2><p>For a useful correction, note the city or artist, the exact detail to review, and a non-streaming source that supports the change. Suggestions are not published automatically; each update is checked and dated before it appears in the atlas.</p><Link className="method-atlas-link" href="/#atlas">Return to the atlas <ArrowUpRight size={14} /></Link></div></section>
-    <footer className="page-footer"><span>TRANSATLANTIC AFRICA © 2026</span><span>A SOURCE-LED FIELD GUIDE TO HIP-HOP</span><span>AFRICA ↔ ATLANTIC</span></footer>
+    <SiteFooter />
   </main>
 }
