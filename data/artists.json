@@ -95,6 +95,57 @@
     "lastChecked": "2026-11-18"
   },
   {
+    "name": "M.I Abaga",
+    "country": "Nigeria",
+    "city": "Jos",
+    "sceneCity": "Lagos",
+    "languagesRappedIn": ["English"],
+    "yearsActive": "2003–present",
+    "bio": "Born and raised in Jos, M.I built a Nigerian rap career that led to Chocolate City's CEO role. He describes English-language rap as one of his creative lanes and rejects pressure to stay within one language.",
+    "keyReleases": [{ "title": "Talk About It", "year": 2008 }],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [
+      { "title": "Ladybrille — M.I. aka Hip-Hop Messiah, Uncut", "url": "https://ladybrille.blogspot.com/2009/02/mi-aka-hip-hop-messiah-uncut-ladybrille.html" },
+      { "title": "The Guardian Nigeria — Chocolate City announces MI as the new CEO", "url": "https://guardian.ng/news/chocolate-city-announces-mi-as-the-new-the-ceo/" },
+      { "title": "Music in Africa — How MI Abaga made two albums in one year", "url": "https://musicinafrica.net/magazine/how-mi-abaga-made-two-albums-one-year/" },
+      { "title": "Wikipedia — M.I Abaga", "url": "https://en.wikipedia.org/wiki/M.I_Abaga" }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-20"
+  },
+  {
+    "name": "Dagrin",
+    "country": "Nigeria",
+    "city": "Meiran, Lagos",
+    "sceneCity": "Lagos",
+    "languagesRappedIn": ["Yoruba", "English", "Pidgin English"],
+    "yearsActive": null,
+    "bio": "Originally from Ogun State, Dagrin used Yoruba, English and Pidgin to tell street-level stories connected to Lagos neighborhoods such as Meiran and Mushin.",
+    "keyReleases": [{ "title": "C.E.O.", "year": 2009 }],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [
+      { "title": "The Guardian Nigeria — Dagrin: An Unforgettable Indigenous Rap Star", "url": "https://guardian.ng/life/dagrin-an-unforgettable-indigenous-rap-star/" },
+      { "title": "Premium Times — Remembering Dagrin, Nigeria’s foremost indigenous rapper, 12 years after", "url": "https://www.premiumtimesng.com/entertainment/music/525253-remembering-dagrin-nigerias-foremost-indigenous-rapper12-years-after.html" },
+      { "title": "Wikipedia — Dagrin", "url": "https://en.wikipedia.org/wiki/Dagrin" }
+    ],
+    "status": "verified",
+    "lastChecked": "2026-11-20"
+  },
+  {
+    "name": "Droxx",
+    "country": "Nigeria",
+    "city": "Lagos",
+    "sceneCity": "Lagos",
+    "languagesRappedIn": ["Yoruba", "Nigerian Pidgin"],
+    "yearsActive": null,
+    "bio": "Lagos-based rapper Droxx says he uses Yoruba and Pidgin in his drill verses and helped build the 234Drill movement with Mo’Gunz.",
+    "keyReleases": [{ "title": "Riot (with Mo’Gunz)", "year": 2021 }],
+    "officialLinks": { "spotify": null, "youtube": null, "audiomack": null },
+    "sources": [{ "title": "49th Street — Droxx: The Man on a Mission", "url": "https://the49thstreet.com/droxx-the-man-on-a-mission/" }],
+    "status": "draft",
+    "lastChecked": "2026-11-20"
+  },
+  {
     "name": "Reggie Rockstone",
     "country": "Ghana",
     "city": "Accra",
