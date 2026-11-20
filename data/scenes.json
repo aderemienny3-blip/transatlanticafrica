@@ -32,14 +32,17 @@
     "city": "Lagos",
     "coordinates": [3.39467, 6.45407],
     "definingEra": "Mainland Lagos indigenous rap's breakthrough around Olamide's 2010 hit Eni Duro",
-    "localSubgenres": ["Indigenous-language rap"],
+    "localSubgenres": ["Indigenous-language rap", "234Drill"],
     "keyVenuesOrEvents": [],
     "sources": [
       { "title": "The Guardian — Olamide: people have a very limited understanding of the ghetto", "url": "https://www.theguardian.com/music/2021/jun/16/nigerian-rapper-olamide-people-have-a-very-limited-understanding-of-the-ghetto" },
+      { "title": "49th Street — Droxx: The Man on a Mission", "url": "https://the49thstreet.com/droxx-the-man-on-a-mission/" },
+      { "title": "X — Nigerian Barz Association (@NigerianBarz)", "url": "https://x.com/NigerianBarz" },
+      { "title": "X — Kulture Pro (@Rapkulture)", "url": "https://x.com/Rapkulture" },
       { "title": "OpenStreetMap — Lagos", "url": "https://www.openstreetmap.org/node/27565124" }
     ],
     "status": "documented",
-    "lastChecked": "2026-11-18"
+    "lastChecked": "2026-11-20"
   },
   {
     "country": "South Africa",
